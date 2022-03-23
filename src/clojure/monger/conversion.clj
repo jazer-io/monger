@@ -43,6 +43,7 @@
 
    * http://clojuremongodb.info/articles/inserting.html
    * http://clojuremongodb.info/articles/querying.html"
+  (:require [flatland.ordered.map :refer [ordered-map]])
   (:import [com.mongodb DBObject BasicDBObject BasicDBList DBCursor]
            [clojure.lang IPersistentMap Named Keyword Ratio]
            [java.util List Map Date Set]
@@ -142,7 +143,7 @@
                 (assoc m (keyword k) (from-db-object (.get input k) true)))
               (fn [m ^String k]
                 (assoc m k (from-db-object (.get input k) false))))
-            {} (.keySet input))))
+            (ordered-map) (.keySet input))))
 
 
 (defprotocol ConvertToObjectId

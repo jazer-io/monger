@@ -6,7 +6,8 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure        "1.10.1"]
                  [org.mongodb/mongodb-driver "3.12.7"]
-                 [clojurewerkz/support       "1.5.0"]]
+                 [clojurewerkz/support       "1.5.0"]
+                 [org.flatland/ordered       "1.15.10"]]
   :test-selectors {:default     (fn [m]
                                   (and (not (:performance m))
                                        (not (:edge-features m))
