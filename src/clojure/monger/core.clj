@@ -273,9 +273,8 @@
   [^String uri-string]
   (let [uri    (MongoClientURI. uri-string)
         conn   (MongoClient. uri)]
-    (if-let [dbName (.getDatabase uri)]
-      {:conn conn :db (.getDB conn dbName)}
-      (throw (IllegalArgumentException. "No database name specified in URI. Monger requires a database to be explicitly configured.")))))
+    {:conn conn
+     :db   (some->> (.getDatabase uri) (.getDB conn))}
 
 (defn ^com.mongodb.CommandResult command
   "Runs a database command (please check MongoDB documentation for the complete list of commands).
