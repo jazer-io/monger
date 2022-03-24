@@ -274,7 +274,7 @@
   (let [uri    (MongoClientURI. uri-string)
         conn   (MongoClient. uri)]
     {:conn conn
-     :db   (some->> (.getDatabase uri) (.getDB conn))}
+     :db   (some->> (.getDatabase uri) (.getDB conn))}))
 
 (defn ^com.mongodb.CommandResult command
   "Runs a database command (please check MongoDB documentation for the complete list of commands).
